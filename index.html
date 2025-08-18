@@ -7,46 +7,65 @@
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            text-align: center;
             margin: 0;
-            padding: 20px;
-            background-color: #f4f7f9;
-            color: #333;
+            padding: 0;
+            background-color: #ecf0f1;
+            color: #2c3e50;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-        h1 {
-            color: #2c3e50;
-            margin-bottom: 30px;
-            font-size: 2.5em;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .banner {
+            width: 100%;
+            background-color: #3498db;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-        .legislators {
-            background-color: #ffffff;
-            padding: 20px 40px;
+        .container {
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1200px;
+        }
+        .card {
+            background-color: white;
+            padding: 15px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            width: 100%;
+            width: 150px;
+            text-align: center;
+            transition: transform 0.2s;
         }
-        p {
-            font-size: 1.2em;
-            margin: 15px 0;
-            color: #34495e;
-            font-weight: 500;
+        .card:hover {
+            transform: scale(1.05);
         }
-        span {
-            font-weight: bold;
+        .card p {
+            margin: 5px 0;
+            font-size: 1em;
+        }
+        .card .name {
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        .card .days {
             color: #e74c3c;
+            font-weight: bold;
+            font-size: 1.2em;
         }
         footer {
             margin-top: auto;
             padding: 10px 0;
             color: #7f8c8d;
             font-size: 0.9em;
+            width: 100%;
+            text-align: center;
         }
         img {
             position: absolute;
@@ -58,33 +77,50 @@
             z-index: 1;
         }
         @media (max-width: 600px) {
-            .legislators {
-                padding: 15px;
-                max-width: 90%;
+            .card {
+                width: 120px;
             }
-            h1 {
-                font-size: 2em;
+            .banner {
+                font-size: 1.2em;
             }
-            p {
+            .card .days {
                 font-size: 1em;
             }
         }
     </style>
 </head>
 <body>
-    <h1>Días Restantes de Mandatos</h1>
-    <div class="legislators">
-        <p>Lourdes Arrieta: <span id="Lourdes-Arrieta"></span> días restantes</p>
-        <p>Ricardo-López-Murphy: <span id="Ricardo-López-Murphy"></span> días restantes</p>
-        <p>Martín-Tetaz: <span id="Martín-Tetaz"></span> días restantes</p>
-        <p>Marcela-Pagano: <span id="Marcela-Pagano"></span> días restantes</p>
-        <p>Martín-Lousteau: <span id="Martín-Lousteau"></span> días restantes</p>
-        <p>Miguel-Ángel-Pichetto: <span id="Miguel-Ángel-Pichetto"></span> días restantes</p>
+    <div class="banner">Fin de mandato de Diputados</div>
+    <div class="container">
+        <div class="card">
+            <p class="name">Lourdes Arrieta</p>
+            <p class="days" id="Lourdes-Arrieta"></p>
+        </div>
+        <div class="card">
+            <p class="name">Ricardo López Murphy</p>
+            <p class="days" id="Ricardo-López-Murphy"></p>
+        </div>
+        <div class="card">
+            <p class="name">Martín Tetaz</p>
+            <p class="days" id="Martín-Tetaz"></p>
+        </div>
+        <div class="card">
+            <p class="name">Marcela Pagano</p>
+            <p class="days" id="Marcela-Pagano"></p>
+        </div>
+        <div class="card">
+            <p class="name">Martín Lousteau</p>
+            <p class="days" id="Martín-Lousteau"></p>
+        </div>
+        <div class="card">
+            <p class="name">Miguel Ángel Pichetto</p>
+            <p class="days" id="Miguel-Ángel-Pichetto"></p>
+        </div>
     </div>
     <footer>
         <p>Created anonymously</p>
     </footer>
-    <img src="tronco.jpeg" alt="Imagen adicional">
+    <img src="imagen-fondo.jpg" alt="Imagen adicional">
 
     <script>
         const legislators = [
