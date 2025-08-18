@@ -3,46 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Días hasta el fin del mandato</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Días Restantes de Mandatos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 50px;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        /* Asegurar que la imagen no afecte el flujo del contenido */
+        img {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            width: 200px;
+            z-index: 1;
+        }
+    </style>
 </head>
 <body>
-    <div class="countdown-container">
-        <h1>Fin de mandato de Diputados</h1>
-        <div class="countdown">
-            <div class="deputy-container">
-                <h2>Lourdes Arrieta</h2>
-                <p><span class="days-arrieta">0</span> días restantes</p>
-            </div>
-            <div class="deputy-container">
-                <h2>Ricardo López Murphy</h2>
-                <p><span class="days-lopez">0</span> días restantes</p>
-            </div>
-            <div class="deputy-container">
-                <h2>Martín Tetaz</h2>
-                <p><span class="days-tetaz">0</span> días restantes</p>
-            </div>
-            <div class="deputy-container">
-                <h2>Marcela Pagano</h2>
-                <p><span class="days-pagano">0</span> días restantes</p>
-            </div>
-            <div class="deputy-container">
-                <h2>Martín Lousteau</h2>
-                <p><span class="days-lousteau">0</span> días restantes</p>
-            </div>
-            <div class="deputy-container">
-                <h2>Martín Lousteau</h2>
-                <p><span class="days-lousteau">0</span> días restantes</p>
-            </div>
-        </div>
-    </div>
+    <h1>Días Restantes de Mandatos de Legisladores</h1>
+    <p>Lourdes Arrieta: <span id="Lourdes-Arrieta"></span> días restantes</p>
+    <p>Ricardo-López-Murphy: <span id="Ricardo-López-Murphy"></span> días restantes</p>
+    <p>Martín-Tetaz: <span id="Martín-Tetaz"></span> días restantes</p>
+    <p>Marcela-Pagano: <span id="Marcela-Pagano"></span> días restantes</p>
+    <p>Martín-Lousteau: <span id="Martín-Lousteau"></span> días restantes</p>
+    <p>Miguel-Ángel-Pichetto: <span id="Miguel-Ángel-Pichetto"></span> días restantes</p>
     <footer>
-        <p>Creado por <a href="@ankwind4545" target="_blank">@ankwind4545</a></p>
+        <p>Created anonymously</p>
     </footer>
-    <script src="script.js"></script>
-    <img src="tronco.jpeg" alt="Imagen adicional" style="position: absolute; bottom: 10px; left: 10px; width: 200px;">
-</body>
 
+    <img src="tronco.jpeg" alt="Imagen adicional">
+
+    <script>
+        const legislators = [
+            { name: "Lourdes Arrieta", start: new Date("2023-12-10"), end: new Date("2027-12-10") },
+            { name: "Ricardo López Murphy", start: new Date("2023-12-10"), end: new Date("2027-12-10") },
+            { name: "Martín Tetaz", start: new Date("2023-12-10"), end: new Date("2027-12-10") },
+            { name: "Marcela Pagano", start: new Date("2023-12-10"), end: new Date("2027-12-10") },
+            { name: "Martín Lousteau", start: new Date("2023-12-10"), end: new Date("2027-12-10") },
+            { name: "Miguel Ángel Pichetto", start: new Date("2023-12-10"), end: new Date("2027-12-10") }
+        ];
+
+        function updateDays() {
+            const today = new Date();
+            legislators.forEach(legislator => {
+                const daysLeft = Math.ceil((legislator.end - today) / (1000 * 60 * 60 * 24));
+                document.getElementById(legislator.name.replace(/\s+/g, '-')).textContent = daysLeft;
+            });
+        }
+        updateDays();
+        setInterval(updateDays, 86400000); // Actualiza diariamente
+    </script>
+</body>
 </html>
 
 
