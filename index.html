@@ -6,41 +6,85 @@
     <title>Días Restantes de Mandatos</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             text-align: center;
             margin: 0;
-            padding: 50px;
-            background-color: #f0f0f0;
+            padding: 20px;
+            background-color: #f4f7f9;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         h1 {
-            color: #333;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .legislators {
+            background-color: #ffffff;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
         }
         p {
-            font-size: 18px;
-            margin: 10px 0;
+            font-size: 1.2em;
+            margin: 15px 0;
+            color: #34495e;
+            font-weight: 500;
+        }
+        span {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+        footer {
+            margin-top: auto;
+            padding: 10px 0;
+            color: #7f8c8d;
+            font-size: 0.9em;
         }
         img {
             position: absolute;
             bottom: 10px;
             left: 10px;
             width: 200px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             z-index: 1;
+        }
+        @media (max-width: 600px) {
+            .legislators {
+                padding: 15px;
+                max-width: 90%;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            p {
+                font-size: 1em;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Días Restantes de Mandatos de Legisladores</h1>
-    <p>Lourdes Arrieta: <span id="Lourdes-Arrieta"></span> días restantes</p>
-    <p>Ricardo-López-Murphy: <span id="Ricardo-López-Murphy"></span> días restantes</p>
-    <p>Martín-Tetaz: <span id="Martín-Tetaz"></span> días restantes</p>
-    <p>Marcela-Pagano: <span id="Marcela-Pagano"></span> días restantes</p>
-    <p>Martín-Lousteau: <span id="Martín-Lousteau"></span> días restantes</p>
-    <p>Miguel-Ángel-Pichetto: <span id="Miguel-Ángel-Pichetto"></span> días restantes</p>
+    <h1>Días Restantes de Mandatos</h1>
+    <div class="legislators">
+        <p>Lourdes Arrieta: <span id="Lourdes-Arrieta"></span> días restantes</p>
+        <p>Ricardo-López-Murphy: <span id="Ricardo-López-Murphy"></span> días restantes</p>
+        <p>Martín-Tetaz: <span id="Martín-Tetaz"></span> días restantes</p>
+        <p>Marcela-Pagano: <span id="Marcela-Pagano"></span> días restantes</p>
+        <p>Martín-Lousteau: <span id="Martín-Lousteau"></span> días restantes</p>
+        <p>Miguel-Ángel-Pichetto: <span id="Miguel-Ángel-Pichetto"></span> días restantes</p>
+    </div>
     <footer>
         <p>Created anonymously</p>
     </footer>
-
-    <img src="imagen-fondo.jpg" alt="Imagen adicional">
+    <img src="tronco.jpeg" alt="Imagen adicional">
 
     <script>
         const legislators = [
