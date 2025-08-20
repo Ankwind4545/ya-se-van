@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Días Restantes de Mandatos Inútiles</title>
+    <title>Días Restantes de Mandatos</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -59,18 +59,31 @@
             font-weight: bold;
             font-size: 1.2em;
         }
+        /* Estilo para el contenedor de la tarjeta con imagen */
+        .card-with-image {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .card-with-image img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
         footer {
             margin-top: auto;
-            padding: 10px 0;
+            padding: 20px 0;
             color: #7f8c8d;
             font-size: 0.9em;
             width: 100%;
             text-align: center;
         }
-        img {
-            position: absolute;
-            bottom: 10px;
-            left: 10px;
+        img.footer-image {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
             width: 200px;
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -86,11 +99,24 @@
             .card .days {
                 font-size: 1em;
             }
+            .card-with-image {
+                flex-direction: column;
+                align-items: center;
+            }
+            .card-with-image img {
+                width: 80px;
+                height: 80px;
+            }
+            img.footer-image {
+                width: 150px;
+                bottom: 10px;
+                left: 10px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="banner">Fin de mandato de Diputados Inútiles</div>
+    <div class="banner">Fin de Mandato de Diputados</div>
     <div class="container">
         <div class="card">
             <p class="name">Lourdes Arrieta</p>
@@ -117,10 +143,20 @@
             <p class="days" id="Miguel-Ángel-Pichetto"></p>
         </div>
     </div>
+    <div class="banner">Días Restantes para Cristina Kirchner</div>
+    <div class="container">
+        <div class="card-with-image">
+            <div class="card">
+                <p class="name">Cristina Kirchner</p>
+                <p class="days" id="Cristina-Kirchner"></p>
+            </div>
+            <img src="LOS-EXCESOS-DE-CFK.jpg" alt="Fotografía de Cristina Kirchner">
+        </div>
+    </div>
     <footer>
         <p>Created by @Ankwind4545</p>
     </footer>
-    <img src="tronco.jpeg" alt="Imagen adicional">
+    <img class="footer-image" src="tronco.jpeg" alt="Fotografía ilustrativa">
 
     <script>
         const legislators = [
@@ -129,19 +165,23 @@
             { name: "Martín Tetaz", start: new Date("2021-12-10"), end: new Date("2025-12-09") },
             { name: "Marcela Pagano", start: new Date("2023-12-10"), end: new Date("2027-12-09") },
             { name: "Martín Lousteau", start: new Date("2019-12-10"), end: new Date("2025-12-09") },
-            { name: "Miguel Ángel Pichetto", start: new Date("2023-12-10"), end: new Date("2027-12-09") }
+            { name: "Miguel Ángel Pichetto", start: new Date("2023-12-10"), end: new Date("2027-12-09") },
+            { name: "Cristina Kirchner", start: new Date("2025-06-17"), end: new Date("2031-06-17") },
         ];
 
         function updateDays() {
             const today = new Date();
             legislators.forEach(legislator => {
-                const daysLeft = Math.ceil((legislator.end - today) / (1000 * 60 * 60 * 24));
-                document.getElementById(legislator.name.replace(/\s+/g, '-')).textContent = daysLeft;
+                const element = document.getElementById(legislator.name.replace(/\s+/g, '-'));
+                if (element) {
+                    const daysLeft = Math.ceil((legislator.end - today) / (1000 * 60 * 60 * 24));
+                    element.textContent = daysLeft >= 0 ? `${daysLeft} días` : "Condena finalizada";
+                }
             });
         }
+
         updateDays();
         setInterval(updateDays, 86400000); // Actualiza diariamente
     </script>
 </body>
 </html>
-
